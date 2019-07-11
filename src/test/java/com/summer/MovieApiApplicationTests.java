@@ -1,5 +1,6 @@
 package com.summer;
 
+import com.summer.service.MovieService;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
@@ -18,8 +19,12 @@ public class MovieApiApplicationTests {
     @Autowired
     JestClient jestClient;
 
+    @Autowired
+    MovieService movieService;
+
     @Test
     public void contextLoads() {
+        movieService.getMoviesByName("");
     }
 
     @Test
