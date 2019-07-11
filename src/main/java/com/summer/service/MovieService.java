@@ -22,4 +22,8 @@ public interface MovieService {
 
     List<Movie>  getMoviesOrderByRemen(int pageSize, int page);
 
+    void setCommentId(String commentId, int movieId);
+
+    void setRemenZhishu(int remenZhishu, int movieId);
+
 }

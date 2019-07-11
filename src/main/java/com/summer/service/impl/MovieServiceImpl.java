@@ -39,4 +39,14 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getMoviesOrderByRemen(int pageSize, int page) {
         return null;
     }
+
+    @Override
+    public void setCommentId(String commentId, int movieId) {
+
+    }
+
+    @Override
+    public void setRemenZhishu(int remenZhishu, int movieId) {
+
+    }
 }
