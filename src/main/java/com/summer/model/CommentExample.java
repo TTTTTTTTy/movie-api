@@ -303,6 +303,66 @@ public class CommentExample {
             addCriterion("content not between", value1, value2, "content");
             return (Criteria) this;
         }
+
+        public Criteria andEmotionIsNull() {
+            addCriterion("emotion is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionIsNotNull() {
+            addCriterion("emotion is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionEqualTo(Boolean value) {
+            addCriterion("emotion =", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionNotEqualTo(Boolean value) {
+            addCriterion("emotion <>", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionGreaterThan(Boolean value) {
+            addCriterion("emotion >", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("emotion >=", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionLessThan(Boolean value) {
+            addCriterion("emotion <", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionLessThanOrEqualTo(Boolean value) {
+            addCriterion("emotion <=", value, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionIn(List<Boolean> values) {
+            addCriterion("emotion in", values, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionNotIn(List<Boolean> values) {
+            addCriterion("emotion not in", values, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionBetween(Boolean value1, Boolean value2) {
+            addCriterion("emotion between", value1, value2, "emotion");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmotionNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("emotion not between", value1, value2, "emotion");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

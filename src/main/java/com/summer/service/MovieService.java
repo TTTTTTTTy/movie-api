@@ -2,6 +2,7 @@ package com.summer.service;
 
 import com.summer.model.Movie;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -10,20 +11,16 @@ import java.util.List;
  */
 public interface MovieService {
 
-    List<Movie>  getMoviesByName(String moiveName);
+    List<Movie>  searchMovies(String key, String value) throws IOException;
 
-    List<Movie>  getMoviesByDaoyan(String moiveDaoyan);
+    List<Movie>  getMoviesByKind(String kind, int pageSize, int page) throws IOException;
 
-    List<Movie>  getMoviesByZhuyan(String movieZhuyan);
+    List<Movie>  getMovies(String key, int pageSize, int page) throws IOException;
 
-    List<Movie>  getMoviesByJianjie(String moiveJianjie);
+    Movie getMovie(String id) throws IOException;
 
-    List<Movie>  getMoviesOrderByPingfen(int pageSize, int page);
+    void addComment(String movieId, String username, String content) throws IOException;
 
-    List<Movie>  getMoviesOrderByRemen(int pageSize, int page);
-
-    void setCommentId(String commentId, int movieId);
-
-    void setRemenZhishu(int remenZhishu, int movieId);
+    void updateRemenZhishu(String movieId) throws IOException;
 
 }

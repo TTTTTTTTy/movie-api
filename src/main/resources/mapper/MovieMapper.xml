@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.mapper.MovieMapper">
+  <resultMap id="BaseResultMap" type="com.summer.model.Movie">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="movie_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_daoyan" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_bianju" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_zhuyan" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_leixing" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shangyingriqi" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shichang" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pingfen" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="pinglun1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun3" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun4" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun5" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tupian_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="remenzhishu" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="comment_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="emotion1" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion2" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion3" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion4" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion5" javaType="java.lang.Boolean" jdbcType="BIT" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.summer.model.Movie">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="movie_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_daoyan" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_bianju" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_zhuyan" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="movie_leixing" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shangyingriqi" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shichang" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pingfen" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="pinglun1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun3" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun4" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pinglun5" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tupian_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="remenzhishu" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="comment_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="emotion1" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion2" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion3" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion4" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="emotion5" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="jianjie" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, movie_name, movie_daoyan, movie_bianju, movie_zhuyan, movie_leixing, shangyingriqi, 
+    shichang, pingfen, pinglun1, pinglun2, pinglun3, pinglun4, pinglun5, tupian_url, 
+    remenzhishu, comment_id, emotion1, emotion2, emotion3, emotion4, emotion5
+  </sql>
+  <sql id="Blob_Column_List">
+    jianjie
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.summer.model.MovieExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_infos
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.summer.model.MovieExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from movie_infos
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_infos
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_infos
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.summer.model.MovieExample">
+    delete from movie_infos
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.summer.model.Movie">
+    insert into movie_infos (id, movie_name, movie_daoyan, 
+      movie_bianju, movie_zhuyan, movie_leixing, 
+      shangyingriqi, shichang, pingfen, 
+      pinglun1, pinglun2, pinglun3, 
+      pinglun4, pinglun5, tupian_url, 
+      remenzhishu, comment_id, emotion1, 
+      emotion2, emotion3, emotion4, emotion5, 
+      jianjie)
+    values (#{id,jdbcType=INTEGER}, #{movie_name,jdbcType=VARCHAR}, #{movie_daoyan,jdbcType=VARCHAR}, 
+      #{movie_bianju,jdbcType=VARCHAR}, #{movie_zhuyan,jdbcType=VARCHAR}, #{movie_leixing,jdbcType=VARCHAR}, 
+      #{shangyingriqi,jdbcType=VARCHAR}, #{shichang,jdbcType=VARCHAR}, #{pingfen,jdbcType=DOUBLE}, 
+      #{pinglun1,jdbcType=VARCHAR}, #{pinglun2,jdbcType=VARCHAR}, #{pinglun3,jdbcType=VARCHAR}, 
+      #{pinglun4,jdbcType=VARCHAR}, #{pinglun5,jdbcType=VARCHAR}, #{tupian_url,jdbcType=VARCHAR}, 
+      #{remenzhishu,jdbcType=INTEGER}, #{comment_id,jdbcType=VARCHAR}, #{emotion1,jdbcType=BIT}, 
+      #{emotion2,jdbcType=BIT}, #{emotion3,jdbcType=BIT}, #{emotion4,jdbcType=BIT}, #{emotion5,jdbcType=BIT}, 
+      #{jianjie,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.model.Movie">
+    insert into movie_infos
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="movie_name != null">
+        movie_name,
+      </if>
+      <if test="movie_daoyan != null">
+        movie_daoyan,
+      </if>
+      <if test="movie_bianju != null">
+        movie_bianju,
+      </if>
+      <if test="movie_zhuyan != null">
+        movie_zhuyan,
+      </if>
+      <if test="movie_leixing != null">
+        movie_leixing,
+      </if>
+      <if test="shangyingriqi != null">
+        shangyingriqi,
+      </if>
+      <if test="shichang != null">
+        shichang,
+      </if>
+      <if test="pingfen != null">
+        pingfen,
+      </if>
+      <if test="pinglun1 != null">
+        pinglun1,
+      </if>
+      <if test="pinglun2 != null">
+        pinglun2,
+      </if>
+      <if test="pinglun3 != null">
+        pinglun3,
+      </if>
+      <if test="pinglun4 != null">
+        pinglun4,
+      </if>
+      <if test="pinglun5 != null">
+        pinglun5,
+      </if>
+      <if test="tupian_url != null">
+        tupian_url,
+      </if>
+      <if test="remenzhishu != null">
+        remenzhishu,
+      </if>
+      <if test="comment_id != null">
+        comment_id,
+      </if>
+      <if test="emotion1 != null">
+        emotion1,
+      </if>
+      <if test="emotion2 != null">
+        emotion2,
+      </if>
+      <if test="emotion3 != null">
+        emotion3,
+      </if>
+      <if test="emotion4 != null">
+        emotion4,
+      </if>
+      <if test="emotion5 != null">
+        emotion5,
+      </if>
+      <if test="jianjie != null">
+        jianjie,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="movie_name != null">
+        #{movie_name,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_daoyan != null">
+        #{movie_daoyan,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_bianju != null">
+        #{movie_bianju,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_zhuyan != null">
+        #{movie_zhuyan,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_leixing != null">
+        #{movie_leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="shangyingriqi != null">
+        #{shangyingriqi,jdbcType=VARCHAR},
+      </if>
+      <if test="shichang != null">
+        #{shichang,jdbcType=VARCHAR},
+      </if>
+      <if test="pingfen != null">
+        #{pingfen,jdbcType=DOUBLE},
+      </if>
+      <if test="pinglun1 != null">
+        #{pinglun1,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun2 != null">
+        #{pinglun2,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun3 != null">
+        #{pinglun3,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun4 != null">
+        #{pinglun4,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun5 != null">
+        #{pinglun5,jdbcType=VARCHAR},
+      </if>
+      <if test="tupian_url != null">
+        #{tupian_url,jdbcType=VARCHAR},
+      </if>
+      <if test="remenzhishu != null">
+        #{remenzhishu,jdbcType=INTEGER},
+      </if>
+      <if test="comment_id != null">
+        #{comment_id,jdbcType=VARCHAR},
+      </if>
+      <if test="emotion1 != null">
+        #{emotion1,jdbcType=BIT},
+      </if>
+      <if test="emotion2 != null">
+        #{emotion2,jdbcType=BIT},
+      </if>
+      <if test="emotion3 != null">
+        #{emotion3,jdbcType=BIT},
+      </if>
+      <if test="emotion4 != null">
+        #{emotion4,jdbcType=BIT},
+      </if>
+      <if test="emotion5 != null">
+        #{emotion5,jdbcType=BIT},
+      </if>
+      <if test="jianjie != null">
+        #{jianjie,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.summer.model.MovieExample" resultType="java.lang.Long">
+    select count(*) from movie_infos
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update movie_infos
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.movie_name != null">
+        movie_name = #{record.movie_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movie_daoyan != null">
+        movie_daoyan = #{record.movie_daoyan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movie_bianju != null">
+        movie_bianju = #{record.movie_bianju,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movie_zhuyan != null">
+        movie_zhuyan = #{record.movie_zhuyan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movie_leixing != null">
+        movie_leixing = #{record.movie_leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangyingriqi != null">
+        shangyingriqi = #{record.shangyingriqi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shichang != null">
+        shichang = #{record.shichang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pingfen != null">
+        pingfen = #{record.pingfen,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pinglun1 != null">
+        pinglun1 = #{record.pinglun1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pinglun2 != null">
+        pinglun2 = #{record.pinglun2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pinglun3 != null">
+        pinglun3 = #{record.pinglun3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pinglun4 != null">
+        pinglun4 = #{record.pinglun4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pinglun5 != null">
+        pinglun5 = #{record.pinglun5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tupian_url != null">
+        tupian_url = #{record.tupian_url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remenzhishu != null">
+        remenzhishu = #{record.remenzhishu,jdbcType=INTEGER},
+      </if>
+      <if test="record.comment_id != null">
+        comment_id = #{record.comment_id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emotion1 != null">
+        emotion1 = #{record.emotion1,jdbcType=BIT},
+      </if>
+      <if test="record.emotion2 != null">
+        emotion2 = #{record.emotion2,jdbcType=BIT},
+      </if>
+      <if test="record.emotion3 != null">
+        emotion3 = #{record.emotion3,jdbcType=BIT},
+      </if>
+      <if test="record.emotion4 != null">
+        emotion4 = #{record.emotion4,jdbcType=BIT},
+      </if>
+      <if test="record.emotion5 != null">
+        emotion5 = #{record.emotion5,jdbcType=BIT},
+      </if>
+      <if test="record.jianjie != null">
+        jianjie = #{record.jianjie,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update movie_infos
+    set id = #{record.id,jdbcType=INTEGER},
+      movie_name = #{record.movie_name,jdbcType=VARCHAR},
+      movie_daoyan = #{record.movie_daoyan,jdbcType=VARCHAR},
+      movie_bianju = #{record.movie_bianju,jdbcType=VARCHAR},
+      movie_zhuyan = #{record.movie_zhuyan,jdbcType=VARCHAR},
+      movie_leixing = #{record.movie_leixing,jdbcType=VARCHAR},
+      shangyingriqi = #{record.shangyingriqi,jdbcType=VARCHAR},
+      shichang = #{record.shichang,jdbcType=VARCHAR},
+      pingfen = #{record.pingfen,jdbcType=DOUBLE},
+      pinglun1 = #{record.pinglun1,jdbcType=VARCHAR},
+      pinglun2 = #{record.pinglun2,jdbcType=VARCHAR},
+      pinglun3 = #{record.pinglun3,jdbcType=VARCHAR},
+      pinglun4 = #{record.pinglun4,jdbcType=VARCHAR},
+      pinglun5 = #{record.pinglun5,jdbcType=VARCHAR},
+      tupian_url = #{record.tupian_url,jdbcType=VARCHAR},
+      remenzhishu = #{record.remenzhishu,jdbcType=INTEGER},
+      comment_id = #{record.comment_id,jdbcType=VARCHAR},
+      emotion1 = #{record.emotion1,jdbcType=BIT},
+      emotion2 = #{record.emotion2,jdbcType=BIT},
+      emotion3 = #{record.emotion3,jdbcType=BIT},
+      emotion4 = #{record.emotion4,jdbcType=BIT},
+      emotion5 = #{record.emotion5,jdbcType=BIT},
+      jianjie = #{record.jianjie,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update movie_infos
+    set id = #{record.id,jdbcType=INTEGER},
+      movie_name = #{record.movie_name,jdbcType=VARCHAR},
+      movie_daoyan = #{record.movie_daoyan,jdbcType=VARCHAR},
+      movie_bianju = #{record.movie_bianju,jdbcType=VARCHAR},
+      movie_zhuyan = #{record.movie_zhuyan,jdbcType=VARCHAR},
+      movie_leixing = #{record.movie_leixing,jdbcType=VARCHAR},
+      shangyingriqi = #{record.shangyingriqi,jdbcType=VARCHAR},
+      shichang = #{record.shichang,jdbcType=VARCHAR},
+      pingfen = #{record.pingfen,jdbcType=DOUBLE},
+      pinglun1 = #{record.pinglun1,jdbcType=VARCHAR},
+      pinglun2 = #{record.pinglun2,jdbcType=VARCHAR},
+      pinglun3 = #{record.pinglun3,jdbcType=VARCHAR},
+      pinglun4 = #{record.pinglun4,jdbcType=VARCHAR},
+      pinglun5 = #{record.pinglun5,jdbcType=VARCHAR},
+      tupian_url = #{record.tupian_url,jdbcType=VARCHAR},
+      remenzhishu = #{record.remenzhishu,jdbcType=INTEGER},
+      comment_id = #{record.comment_id,jdbcType=VARCHAR},
+      emotion1 = #{record.emotion1,jdbcType=BIT},
+      emotion2 = #{record.emotion2,jdbcType=BIT},
+      emotion3 = #{record.emotion3,jdbcType=BIT},
+      emotion4 = #{record.emotion4,jdbcType=BIT},
+      emotion5 = #{record.emotion5,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.model.Movie">
+    update movie_infos
+    <set>
+      <if test="movie_name != null">
+        movie_name = #{movie_name,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_daoyan != null">
+        movie_daoyan = #{movie_daoyan,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_bianju != null">
+        movie_bianju = #{movie_bianju,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_zhuyan != null">
+        movie_zhuyan = #{movie_zhuyan,jdbcType=VARCHAR},
+      </if>
+      <if test="movie_leixing != null">
+        movie_leixing = #{movie_leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="shangyingriqi != null">
+        shangyingriqi = #{shangyingriqi,jdbcType=VARCHAR},
+      </if>
+      <if test="shichang != null">
+        shichang = #{shichang,jdbcType=VARCHAR},
+      </if>
+      <if test="pingfen != null">
+        pingfen = #{pingfen,jdbcType=DOUBLE},
+      </if>
+      <if test="pinglun1 != null">
+        pinglun1 = #{pinglun1,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun2 != null">
+        pinglun2 = #{pinglun2,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun3 != null">
+        pinglun3 = #{pinglun3,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun4 != null">
+        pinglun4 = #{pinglun4,jdbcType=VARCHAR},
+      </if>
+      <if test="pinglun5 != null">
+        pinglun5 = #{pinglun5,jdbcType=VARCHAR},
+      </if>
+      <if test="tupian_url != null">
+        tupian_url = #{tupian_url,jdbcType=VARCHAR},
+      </if>
+      <if test="remenzhishu != null">
+        remenzhishu = #{remenzhishu,jdbcType=INTEGER},
+      </if>
+      <if test="comment_id != null">
+        comment_id = #{comment_id,jdbcType=VARCHAR},
+      </if>
+      <if test="emotion1 != null">
+        emotion1 = #{emotion1,jdbcType=BIT},
+      </if>
+      <if test="emotion2 != null">
+        emotion2 = #{emotion2,jdbcType=BIT},
+      </if>
+      <if test="emotion3 != null">
+        emotion3 = #{emotion3,jdbcType=BIT},
+      </if>
+      <if test="emotion4 != null">
+        emotion4 = #{emotion4,jdbcType=BIT},
+      </if>
+      <if test="emotion5 != null">
+        emotion5 = #{emotion5,jdbcType=BIT},
+      </if>
+      <if test="jianjie != null">
+        jianjie = #{jianjie,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.summer.model.Movie">
+    update movie_infos
+    set movie_name = #{movie_name,jdbcType=VARCHAR},
+      movie_daoyan = #{movie_daoyan,jdbcType=VARCHAR},
+      movie_bianju = #{movie_bianju,jdbcType=VARCHAR},
+      movie_zhuyan = #{movie_zhuyan,jdbcType=VARCHAR},
+      movie_leixing = #{movie_leixing,jdbcType=VARCHAR},
+      shangyingriqi = #{shangyingriqi,jdbcType=VARCHAR},
+      shichang = #{shichang,jdbcType=VARCHAR},
+      pingfen = #{pingfen,jdbcType=DOUBLE},
+      pinglun1 = #{pinglun1,jdbcType=VARCHAR},
+      pinglun2 = #{pinglun2,jdbcType=VARCHAR},
+      pinglun3 = #{pinglun3,jdbcType=VARCHAR},
+      pinglun4 = #{pinglun4,jdbcType=VARCHAR},
+      pinglun5 = #{pinglun5,jdbcType=VARCHAR},
+      tupian_url = #{tupian_url,jdbcType=VARCHAR},
+      remenzhishu = #{remenzhishu,jdbcType=INTEGER},
+      comment_id = #{comment_id,jdbcType=VARCHAR},
+      emotion1 = #{emotion1,jdbcType=BIT},
+      emotion2 = #{emotion2,jdbcType=BIT},
+      emotion3 = #{emotion3,jdbcType=BIT},
+      emotion4 = #{emotion4,jdbcType=BIT},
+      emotion5 = #{emotion5,jdbcType=BIT},
+      jianjie = #{jianjie,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.model.Movie">
+    update movie_infos
+    set movie_name = #{movie_name,jdbcType=VARCHAR},
+      movie_daoyan = #{movie_daoyan,jdbcType=VARCHAR},
+      movie_bianju = #{movie_bianju,jdbcType=VARCHAR},
+      movie_zhuyan = #{movie_zhuyan,jdbcType=VARCHAR},
+      movie_leixing = #{movie_leixing,jdbcType=VARCHAR},
+      shangyingriqi = #{shangyingriqi,jdbcType=VARCHAR},
+      shichang = #{shichang,jdbcType=VARCHAR},
+      pingfen = #{pingfen,jdbcType=DOUBLE},
+      pinglun1 = #{pinglun1,jdbcType=VARCHAR},
+      pinglun2 = #{pinglun2,jdbcType=VARCHAR},
+      pinglun3 = #{pinglun3,jdbcType=VARCHAR},
+      pinglun4 = #{pinglun4,jdbcType=VARCHAR},
+      pinglun5 = #{pinglun5,jdbcType=VARCHAR},
+      tupian_url = #{tupian_url,jdbcType=VARCHAR},
+      remenzhishu = #{remenzhishu,jdbcType=INTEGER},
+      comment_id = #{comment_id,jdbcType=VARCHAR},
+      emotion1 = #{emotion1,jdbcType=BIT},
+      emotion2 = #{emotion2,jdbcType=BIT},
+      emotion3 = #{emotion3,jdbcType=BIT},
+      emotion4 = #{emotion4,jdbcType=BIT},
+      emotion5 = #{emotion5,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

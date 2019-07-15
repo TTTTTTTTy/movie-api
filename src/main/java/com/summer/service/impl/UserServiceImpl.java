@@ -6,6 +6,7 @@ import com.summer.model.UserExample;
 import com.summer.service.UserService;
 import com.summer.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
  * @author Administrator
  * @since 2019/7/11 10:11
  */
+
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -41,7 +44,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean login(String username, String password) {
-        return false;
+    public int login(String username, String password) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username).
+                andPasswordEqualTo(new String(Base64.getEncoder().encode(password.getBytes())));
+        List<User> user = userMapper.selectByExample(userExample);
+        if(user == null  || user.isEmpty()){
+            return Result.USER_NOT_EXISTS.value();
+        }
+        return Result.SUCCESS.value();
     }
 }

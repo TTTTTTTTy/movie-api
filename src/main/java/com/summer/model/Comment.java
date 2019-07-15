@@ -7,10 +7,13 @@ public class Comment {
 
     private String content;
 
-    public Comment(Integer id, String username, String content) {
+    private Boolean emotion;
+
+    public Comment(Integer id, String username, String content, Boolean emotion) {
         this.id = id;
         this.username = username;
         this.content = content;
+        this.emotion = emotion;
     }
 
     public Comment() {
@@ -39,5 +42,13 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public Boolean getEmotion() {
+        return emotion;
+    }
+
+    public void setEmotion(Boolean emotion) {
+        this.emotion = emotion;
     }
 }

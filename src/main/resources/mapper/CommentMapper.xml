@@ -6,6 +6,7 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="emotion" javaType="java.lang.Boolean" jdbcType="BIT" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, content
+    id, username, content, emotion
   </sql>
   <select id="selectByExample" parameterType="com.summer.model.CommentExample" resultMap="BaseResultMap">
     select
@@ -101,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.summer.model.Comment">
-    insert into comment (id, username, content
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
-      )
+    insert into comment (id, username, content, 
+      emotion)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{emotion,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.model.Comment">
+  <insert id="insertSelective" parameterType="com.summer.model.Comment" useGeneratedKeys="true" keyProperty="id">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -118,6 +119,9 @@
       <if test="content != null">
         content,
       </if>
+      <if test="emotion != null">
+        emotion,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -128,6 +132,9 @@
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="emotion != null">
+        #{emotion,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -149,6 +156,9 @@
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
+      <if test="record.emotion != null">
+        emotion = #{record.emotion,jdbcType=BIT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -158,7 +168,8 @@
     update comment
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR}
+      content = #{record.content,jdbcType=VARCHAR},
+      emotion = #{record.emotion,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -172,13 +183,17 @@
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="emotion != null">
+        emotion = #{emotion,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.summer.model.Comment">
     update comment
     set username = #{username,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR}
+      content = #{content,jdbcType=VARCHAR},
+      emotion = #{emotion,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

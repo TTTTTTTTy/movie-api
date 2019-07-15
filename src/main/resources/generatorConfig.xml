@@ -30,6 +30,13 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.summer.mapper" targetProject="./src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
+        <!--<table tableName="movie_infos"-->
+               <!--domainObjectName="Movie"-->
+               <!--mapperName="MovieMapper"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash; table标签下的设置属性useActualColumnNames用于指定生成实体类时是否使用实际的列名作为实体类的属性名，取值true或false&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="true" />-->
+        <!--</table>-->
         <table tableName="comment"
                domainObjectName="Comment"
                mapperName="CommentMapper"
