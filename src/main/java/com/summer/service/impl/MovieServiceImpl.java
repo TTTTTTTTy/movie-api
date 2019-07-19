@@ -49,6 +49,8 @@ public class MovieServiceImpl implements MovieService {
         if(key.equals("jianjie")){
             source.add("jianjie");
             queryMatch = new QueryMatch(key, value, Analyzer.IK_SMART, 50);
+        } else if(key.equals("movie_name")){
+            queryMatch = new QueryMatch(key, value, Analyzer.IK_SMART, 50);
         }
         else{
             queryMatch = new QueryMatch(key, value, Analyzer.STANDARD, 67);
